@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <math.h>
 /*
  * Recebe o expoente "e" e "module" (= (p - 1)*(q - 1)).
  * Retorna o inverso de "e" módulo "module".

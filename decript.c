@@ -1,4 +1,4 @@
-#include <math.h>
+#include "decript.h"
 
 long int search_inverse_mod (long int e, long int module) {
 
