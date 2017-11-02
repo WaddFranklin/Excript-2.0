@@ -1,3 +1,10 @@
+#ifndef _UI_H_
+#define _UI_H_
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <math.h>
 /*
  * Limpa a tela do console. Sem parâmetros. Não retorna nada
  */
@@ -47,3 +54,5 @@ void bye ();
  * do usuário. Sem parâmetros. Não retorna nada.
  */
 void main_menu ();
+
+#endif

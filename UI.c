@@ -1,7 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
 #include "decript.h"
+#include "key.h"
 #include "UI.h"
 
 short int title_screen_flag = 1;
@@ -73,6 +71,7 @@ void execute_option (short int option) {
         case 1:
             clear_screen();
             puts("Chave Pública\n");
+            gerarKey();
             break;
         case 2:
             clear_screen();
@@ -148,7 +147,7 @@ void continue_or_finish () {
     }
 }
 
-void main_menu () {
+void main_menu() {
 
     short int option = -1;
 
