@@ -1,4 +1,5 @@
 
+
 /*
  * Exibe na tela a mensagem decifrada. Recebe um ponteiro para
  * a string com a mensagem criptografada e o
