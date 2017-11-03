@@ -1,10 +1,4 @@
-#ifndef _UI_H_
-#define _UI_H_
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <math.h>
 /*
  * Limpa a tela do console. Sem parâmetros. Não retorna nada
  */
@@ -31,6 +25,12 @@ void title_screen ();
 void print_menu (short int *option);
 
 /*
+ * Imprime o título da opção 1 de main_menu. Sem parâmetros.
+ * Não retorna nada.
+ */
+void print_option_1 ();
+
+/*
  * Executa a funcionalidade escolhida pelo usuário. Recebe
  * option (a opção selecionada). Não retorna nada.
  */
@@ -54,5 +54,3 @@ void bye ();
  * do usuário. Sem parâmetros. Não retorna nada.
  */
 void main_menu ();
-
-#endif

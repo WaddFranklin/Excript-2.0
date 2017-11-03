@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -6,7 +5,7 @@
 
 #define STR_SIZE 100000
 
-long int search_inverse_mod (long int e, long int module) {
+int search_inverse_mod (int e, int module) {
 
     if (module == 1) {
 
@@ -17,15 +16,15 @@ long int search_inverse_mod (long int e, long int module) {
     }
 }
 
-long int extract_root_mod (long int M, long int d) {
+int extract_root_mod (int M, int d) {
 
     return pow(M, d);
 }
 
-void print_decrypted_text (char *str, long int d) {
+void print_decrypted_text (char *str, int d) {
 
     int i;
-    long int number;
+    int number;
     int count = 0;
     char str_aux[3];
 
@@ -50,9 +49,18 @@ void print_decrypted_text (char *str, long int d) {
 void decript () {
 
     char encrypted_text[STR_SIZE];
-    long int p, q, e, d, module;
+    int p, q, e, d, module;
 
-    // ler o 'p', 'q' e o 'e' de um arquivo
+    printf("Digite os valores de 'p', 'q' e 'e' da sua chave privada:\n\n");
+    printf("p = ");
+    scanf("%d", &p);
+
+    printf("\nq = ");
+    scanf("%d", &q);
+
+    printf("\ne = ");
+    scanf("%d", &e);
+
     module = (p - 1) * (q - 1);
     d = search_inverse_mod(e, module);
 
