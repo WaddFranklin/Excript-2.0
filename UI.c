@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include "decript.h"
 #include "key.h"
 #include "UI.h"
@@ -42,6 +45,16 @@ void title_screen () {
     getchar();
 }
 
+void print_option_1 () {
+
+    printf(" _     ____                       ____        _      _  __          \n");
+    printf("/ |   / ___| ___ _ __ __ _ _ __  |  _ \\ _   _| |__  | |/ /___ _   _ \n");
+    printf("| |  | |  _ / _ \\ '__/ _` | '__| | |_) | | | | '_ \\ | ' // _ \\ | | |\n");
+    printf("| |_ | |_| |  __/ | | (_| | |    |  __/| |_| | |_) || . \\  __/ |_| |\n");
+    printf("|_(_) \\____|\\___|_|  \\__,_|_|    |_|    \\__,_|_.__(_)_|\\_\\___|\\__, |\n");
+    printf("                                                              |___/ \n\n");
+}
+
 void print_menu (short int *option) {
 
     printf("                        _____               _       _           \n");
@@ -70,7 +83,6 @@ void execute_option (short int option) {
 
         case 1:
             clear_screen();
-            puts("Chave Pública\n");
             gerarKey();
             break;
         case 2:

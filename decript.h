@@ -1,23 +1,28 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <math.h>
+
+
+/*
+ * Exibe na tela a mensagem decifrada. Recebe um ponteiro para
+ * a string com a mensagem criptografada e o
+ * inverso de e módulo (p - 1)*(q - 1). Não retorna nada.
+ */
+void print_decrypted_text (char *str, int d);
+
 /*
  * Recebe o expoente "e" e "module" (= (p - 1)*(q - 1)).
  * Retorna o inverso de "e" módulo "module".
  */
-long int search_inverse_mod (long int e, long int module);
+int search_inverse_mod (int e, int module);
 
 /*
  * Recebe o valor do caractere criptografado "M" e o inver-
- * so do expoente "e" módulo "N". Retorna o valor do ca-
+ * so do expoente "e" módulo (p - 1)*(q - 1). Retorna o valor do ca-
  * ractere decifrado m dado por M = m ^ (d * e) pela fór-
  * mula de Euler.
  */
-long int extract_root_mod (long int M, long int d);
+int extract_root_mod (int M, int d);
 
 /*
  * Chama as funções necessárias para decifrar a mensagem
- * criptografada. ... . Não retorna nada;
+ * criptografada. Sem parâmetros. Não retorna nada.
  */
 void decript ();
