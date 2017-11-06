@@ -1,28 +1,25 @@
-
-
 /*
- * Exibe na tela a mensagem decifrada. Recebe um ponteiro para
- * a string com a mensagem criptografada e o
- * inverso de e módulo (p - 1)*(q - 1). Não retorna nada.
+ * Calcula o inverso_modular de 'e' módulo 'n'. Recebe o expoente 'e'
+ * e o Coeficiente de Euler 'n'. Retorna o inverso modular.
  */
-void print_decrypted_text (char *str, int d);
+long int modular_inverse (long int e, long int n);
 
 /*
- * Recebe o expoente "e" e "module" (= (p - 1)*(q - 1)).
- * Retorna o inverso de "e" módulo "module".
+ * Calcula a potência de (base ^ exponent) % momdulo de forma mais
+ * eficiente. Recebe a base da potenciação, o expoente e o módulo.
+ * retorna o resultado da potenciação mod módulo.
  */
-int search_inverse_mod (int e, int module);
+long int exp_mod (long int base, long int exponent, long int modulo);
 
 /*
- * Recebe o valor do caractere criptografado "M" e o inver-
- * so do expoente "e" módulo (p - 1)*(q - 1). Retorna o valor do ca-
- * ractere decifrado m dado por M = m ^ (d * e) pela fór-
- * mula de Euler.
+ * Escreve o texto desencriptado na tela. Recebe a string com o texto
+ * codificado, o inverso modular 'd' e a chave pública N = p*q.
+ * Não retorna nada.
  */
-int extract_root_mod (int M, int d);
+void print_decrypted_text (char *str, long int d, long int N);
 
 /*
- * Chama as funções necessárias para decifrar a mensagem
- * criptografada. Sem parâmetros. Não retorna nada.
+ * Chama as funções necessárias para descriptografar uma mensagem.
+ * Sem parâmetros. Não retorna nada.
  */
 void decript ();

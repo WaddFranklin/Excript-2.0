@@ -1,73 +1,97 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
-#include <math.h>
+#include <string.h>
 
-#define STR_SIZE 100000
-
-int search_inverse_mod (int e, int module) {
-
-    if (module == 1) {
-
-        return ((-1) * (e / module));
-    }
-    else {
-        return search_inverse_mod(module, e % module);
-    }
-}
-
-int extract_root_mod (int M, int d) {
-
-    return pow(M, d);
-}
-
-void print_decrypted_text (char *str, int d) {
+long int modular_inverse (long int e, long int n) {
 
     int i;
-    int number;
-    int count = 0;
-    char str_aux[3];
+
+    for (i = 0 ; i <= (n - 1) ; i++) {
+
+        if (((e * i) % n) == 1) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+long int exp_mod (long int base, long int exponent, long int modulo) {
+
+    long int x;
+
+    if (exponent == 0) {
+        return 1;
+    }
+
+    if (exponent == 1) {
+        return base;
+    }
+
+    if ((exponent % 2) == 0) {
+
+        x = exp_mod(base, exponent / 2, modulo) % modulo;
+        return (x * x) % modulo;
+    }
+    else {
+
+        return (base * exp_mod(base, exponent - 1, modulo)) % modulo;
+    }
+}
+
+void print_decrypted_text (char *str, long int d, long int N) {
+
+    int i;
+    int j = 0;
+    long int number;
+    char str_aux[256];
 
     for (i = 0 ; i < strlen(str) ; i++) {
 
-        str_aux[count++] = str[i];
+        if (str[i] != ' ') {
 
-        if (count == 3) {
-
+            str_aux[j++] = str[i];
+        }
+        else {
+            str_aux[j] = '\0';
             number = atoi(str_aux);
-            number = extract_root_mod(number, d);
+            number = exp_mod(number, d, N);
             printf("%c", number);
-            count = 0;
-            i++;
+            j = 0;
         }
     }
-
-    printf("\n\n");
-    return;
+    printf(" ---\n\n");
 }
 
 void decript () {
 
-    char encrypted_text[STR_SIZE];
-    int p, q, e, d, module;
+    printf(" _____    ____                                 _       _             \n");
+    printf("|___ /   |  _ \\  ___  ___  ___ _ __   ___ _ __(_)_ __ | |_ __ _ _ __ \n");
+    printf("  |_ \\   | | | |/ _ \\/ __|/ _ \\ '_ \\ / __| '__| | '_ \\| __/ _` | '__|\n");
+    printf(" ___) |  | |_| |  __/\\__ \\  __/ | | | (__| |  | | |_) | || (_| | |   \n");
+    printf("|____(_) |____/ \\___||___/\\___|_| |_|\\___|_|  |_| .__/ \\__\\__,_|_|   \n");
+    printf("                                                |_|                  \n\n");
 
-    printf("Digite os valores de 'p', 'q' e 'e' da sua chave privada:\n\n");
-    printf("p = ");
-    scanf("%d", &p);
+    long int p, q, e, N, n, d;
+    char encrypted_txt[256];
 
-    printf("\nq = ");
-    scanf("%d", &q);
+    printf("Digite o 'p' da chave privada: ");
+    scanf("%ld", &p);
 
-    printf("\ne = ");
-    scanf("%d", &e);
+    printf("\nDigite o 'q' da chave privada: ");
+    scanf("%ld", &q);
 
-    module = (p - 1) * (q - 1);
-    d = search_inverse_mod(e, module);
-
-    printf("Digite a mensagem codificada:\n\n > ");
-    scanf("%[^\n]s", encrypted_text);
+    printf("\nDigite o 'e' da chave privada: ");
+    scanf("%ld", &e);
     getchar();
 
-    print_decrypted_text(encrypted_text, d);
-    return;
+    N = p * q;
+    n = (p - 1) * (q - 1);
+    d = modular_inverse(e, n);
+
+    printf("\nDigite a mensagem criptografada:\n > ");
+    scanf("%[^\n]s", encrypted_txt);
+    getchar();
+
+    printf("\n--- ");
+    print_decrypted_text(encrypted_txt, d, N);
 }

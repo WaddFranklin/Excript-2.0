@@ -53,7 +53,7 @@ void gerarKey(){
 
     while(1){
 
-        printf("Digite o valor do primo Q:\n");
+        printf("\nDigite o valor do primo Q:\n");
         scanf("%d", &primo2);
         getchar();
 
@@ -79,7 +79,7 @@ void gerarKey(){
 
   while(1){
 
-        printf("Digite o valor do expoente:\n");
+        printf("\nDigite o valor do expoente:\n");
         scanf("%d", &e);
         getchar();
 
@@ -101,5 +101,5 @@ void gerarKey(){
     fprintf(private_key, "p = %d\nq = %d\ne = %d", primo1, primo2, e);
     fclose(private_key);
 
-    printf("Chave Pública gerada!\n");
+    printf("\nChave Pública gerada!\n\n");
 }

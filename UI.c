@@ -4,6 +4,7 @@
 #include "decript.h"
 #include "key.h"
 #include "UI.h"
+#include "encript.h"
 
 short int title_screen_flag = 1;
 
@@ -87,7 +88,7 @@ void execute_option (short int option) {
             break;
         case 2:
             clear_screen();
-            puts("Criptografar\n");
+            encript();
             break;
         case 3:
             clear_screen();
