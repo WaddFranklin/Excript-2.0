@@ -47,18 +47,25 @@ void print_decrypted_text (char *str, long int d, long int N) {
 
     for (i = 0 ; i < strlen(str) ; i++) {
 
-        if (str[i] != ' ') {
+        if (str[i] == ' ') {
 
-            str_aux[j++] = str[i];
-        }
-        else {
             str_aux[j] = '\0';
             number = atoi(str_aux);
             number = exp_mod(number, d, N);
             printf("%c", number);
             j = 0;
         }
+        else {
+
+            str_aux[j++] = str[i];
+        }
     }
+
+    str_aux[j] = '\0';
+    number = atoi(str_aux);
+    number = exp_mod(number, d, N);
+    printf("%c", number);
+
     printf(" ---\n\n");
 }
 

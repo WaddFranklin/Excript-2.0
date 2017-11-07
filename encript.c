@@ -20,7 +20,6 @@ void writeEncryptedTxt(unsigned int encriptedMessage[], int size){
       fprintf(f, " ");
     }
   }
-  fprintf(f, " ");
   fclose(f);
 }
 
